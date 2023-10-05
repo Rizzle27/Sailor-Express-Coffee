@@ -13,8 +13,4 @@ async function getProductsById(id) {
   return db.collection("products").findOne({ _id: new ObjectId(id) })
 }
 
-async function createProduct() {
-
-}
-
-export { getProducts, getProductsById, createProduct };
+export { getProducts, getProductsById };

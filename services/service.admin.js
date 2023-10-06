@@ -5,16 +5,16 @@ const client = new MongoClient("mongodb+srv://lucasgarcia:lucasgarcia@sailorexpr
 
 const db = client.db("AH20232CP1");
 
-async function getProducts() {
-  return db.collection("products").find({deleted: {$ne: true}}).toArray();
+async function getUsers() {
+  return db.collection("users").find().toArray();
 }
 
 async function getProductsById(id) {
-  return db.collection("products").findOne({ _id: new ObjectId(id) })
+  return db.collection("users").findOne({ _id: new ObjectId(id) })
 }
 
 async function getProductsByType(type) {
-  return db.collection("products").find({type: type}).toArray()
+  return db.collection("users").find({type: type}).toArray()
 }
 
-export { getProducts, getProductsById, getProductsByType };
+export { getUsers, getProductsById, getProductsByType };

@@ -19,6 +19,18 @@ const getProductsById = (req, res) => {
   });
 };
 
+const getProductsByType = (req, res) => {
+  const type = req.params.type
+  service.getProductsByType(type).then((products) => {
+    console.log(products)
+    if (products) {
+      res.send(view.createProductsListPage(products))
+    } else {
+      res.status(404).json({ error: "Producto no encontrado" });
+    }
+  });
+};
+
 const createProduct = (req, res) => {
   const product = {
     name: req.body.name,
@@ -26,7 +38,8 @@ const createProduct = (req, res) => {
     description: req.body.description,
     size: req.body.size,
     link: req.body.link,
-    image: req.body.image
+    image: req.body.image,
+    type: req.body.type
   };
 
   service.createProduct(product)
@@ -36,4 +49,4 @@ const createProduct = (req, res) => {
     .catch(res.status(503).json({error: "Producto no creado"}))
 }
 
-export { getProducts, getProductsById, createProduct };
+export { getProducts, getProductsById, createProduct, getProductsByType };

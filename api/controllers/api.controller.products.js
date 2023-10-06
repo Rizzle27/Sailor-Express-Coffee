@@ -24,7 +24,7 @@ const getProductsByType = (req, res) => {
   service.getProductsByType(type).then((products) => {
     console.log(products)
     if (products) {
-      res.send(view.createProductsListPage(products))
+      res.send(view.createProductsListPage(products, type))
     } else {
       res.status(404).json({ error: "Producto no encontrado" });
     }

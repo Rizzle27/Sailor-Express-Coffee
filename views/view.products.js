@@ -1,4 +1,6 @@
-function createProductsListPage(products) {
+import {  TITLES_BY_TYPES } from '../constants/constants.js';
+
+function createProductsListPage(products, type) {
   // console.log(products)
   let html = "";
   html += `
@@ -27,7 +29,7 @@ function createProductsListPage(products) {
       </div>
   </nav>
   <section class="d-flex flex-column justify-content-center text-center text-light py-5">
-      <h2 style="font-size: 5rem;">Nuestra/os</h2>
+      <h2 style="font-size: 5rem;">${TITLES_BY_TYPES.find(item => item.type === type).title}</h2>
       <div class="w-75 my-4 mx-auto">
           <p>¡Bienvenido a nuestro rincón del sabor en la web! En Sailor's Coffee, estamos apasionados por ofrecer una experiencia culinaria única que deleitará tus sentidos y te transportará a un mundo de sabores irresistibles. Nuestra tienda es un paraíso para los amantes del café, los entusiastas de los milkshakes y los adoradores de las tortas. Si eres un verdadero apasionado de las delicias gastronómicas, ¡has llegado al lugar adecuado!</p>
       </div>
